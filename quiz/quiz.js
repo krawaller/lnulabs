@@ -8,7 +8,7 @@ Quiz = function(selector){
 	var app = {
 		errors: [],
 		url: "http://vhost3.lnu.se:20080/question/1",
-		init: function(){
+		init: function(selector){
 			this.container = document.querySelector(selector);
 			this.container.appendChild((this.msglist = create("div")));
 			var form = create("div");
@@ -79,5 +79,5 @@ Quiz = function(selector){
 			this.log("ending","Du hade totalt "+this.errors.reduce(function(m,i){return m+i;},0)+" fel!");
 		}
 	};
-	app.init();
+	app.init(selector);
 };

@@ -7,7 +7,7 @@ window.Chat = function(selector){
 	}
 	var app = {
 		msgs: [],
-		init: function(){
+		init: function(selector){
 			var container = document.querySelector(selector);
 			container.appendChild((this.msglist = create("div")));
 			container.appendChild((this.counter = create("div")));
@@ -54,5 +54,5 @@ window.Chat = function(selector){
 			}
 		}
 	};
-	app.init();
+	app.init(selector);
 };
