@@ -38,11 +38,9 @@ window.Chat = function(selector){
 			this.msglist.appendChild(create("div","Antal: "+this.msgs.length));
 		},
 		drawMessage: function(msg,n){
-			var button = create("button","X",this.deleteMessage.bind(this,n));
-			var time = create("button","?",this.tellTime.bind(this,n));
 			var msg = create("div",this.msgs[n].text.replace(/\n/g,"<br/>"));
-			msg.insertBefore(button,msg.firstChild);
-			msg.insertBefore(time,msg.firstChild);
+			msg.insertBefore(create("button","X",this.deleteMessage.bind(this,n)),msg.firstChild);
+			msg.insertBefore(create("button","?",this.tellTime.bind(this,n)),msg.firstChild);
 			msg.classList.add("message");
 			this.msglist.appendChild(msg);
 		},
