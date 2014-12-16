@@ -1,0 +1,24 @@
+.quizgame {
+	padding: 2em;
+	width: 400px;
+	float: left;
+}
+
+.question {
+	background-color: yellow;
+}
+.error {
+	background-color: red;
+}
+.correct {
+	background-color: green;
+}
+.ending {
+	background-color: magenta;
+}
+.form {
+	display: none;
+}
+.hasquestion > .form {
+	display: block;
+}
