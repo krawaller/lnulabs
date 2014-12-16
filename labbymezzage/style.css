@@ -6,7 +6,7 @@
 }
 .message {
 	border: 1px solid red;
-	background-color: green;
+	background-color: yellow;
 	padding: 5px;
 	min-height: 2em;
 }

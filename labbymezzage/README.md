@@ -1,6 +1,6 @@
 ##Idiomatisk (eller snarare Davidig) implementering av Labby Mezzage
 
-Se labben live [här](http://blog.krawaller.se/jslabs/labbymezzage). Labbinstruktionen finns [här](http://orion.lnu.se/pub/education/course/1DV403/ht12-2/laboration/L02/Laboration%202%20-%20Labby%20Mezzage.pdf).
+Se labben live [här](http://blog.krawaller.se/lnulabs/labbymezzage). Labbinstruktionen finns [här](http://orion.lnu.se/pub/education/course/1DV403/ht12-2/laboration/L02/Laboration%202%20-%20Labby%20Mezzage.pdf).
 
 Jag har bortsett från instruktionen att alla meddelanden ska vara klassinstanser. I JS ligger det ofta närmare till hands att använda statiska funktioner, så som i min lösning.
 
