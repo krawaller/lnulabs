@@ -1,0 +1,33 @@
+td {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+}
+
+td.hidden, td.flag {
+	background-color: #CCC;
+}
+
+td.boom {
+	background-color: red;
+}
+
+td.bogusflag {
+	text-decoration: line-through;
+	color: red;
+}
+
+.minesweeper {
+	border: 1px solid #CCC;
+	float: left;
+	margin: 3em;
+	text-align: center;
+	padding: 1em;
+}
