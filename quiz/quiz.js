@@ -28,12 +28,12 @@ Quiz = function(selector){
 			this.msglist.appendChild(msg);
 		},
 		fetchQuestion: function(){
-			var me = this, xhr = new XMLHttpRequest();
+			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function(){
 				if (xhr.readyState === 4){
-					me.receiveQuestion(JSON.parse(xhr.responseText));
+					this.receiveQuestion(JSON.parse(xhr.responseText));
 				}
-			}
+			}.bind(this);
 			xhr.open("GET", this.url, true);
 			xhr.send(null);
 		},
@@ -45,17 +45,17 @@ Quiz = function(selector){
 			this.input.focus();
 		},
 		answerQuestion: function(){
-			var me = this, xhr = new XMLHttpRequest();
+			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function(){
 				if (xhr.readyState === 4){
-					me.input.value = '';
+					this.input.value = '';
 					if (xhr.status === 400){
-						me.wrongAnswer();
+						this.wrongAnswer();
 					} else {
-						me.correctAnswer(JSON.parse(xhr.responseText));
+						this.correctAnswer(JSON.parse(xhr.responseText));
 					}
 				}
-			}
+			}.bind(this);
 			xhr.open("POST", this.url, true);
 			xhr.setRequestHeader('Content-Type', 'application/json')
 			xhr.send(JSON.stringify({answer:this.input.value}));

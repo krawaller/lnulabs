@@ -7,3 +7,6 @@ Jag har bortsett från instruktionen att alla meddelanden ska vara klassinstanse
 För att koden inte ska bli alltför bloated när vi bygger element så har jag använt en liten helper-function `create`. I övrigt består appen av en enda objektliteral, där `init`-metoden körs vid initialisering. Den bygger upp noder för formulär och lista, samt sätter event-listeners (som alla är metoder på objektliteralen). Listan av meddelanden, som är vår enda state, levandehålls i en array på literalen.
 
 När UI:t initialt byggs upp så behåller jag också referenser till de noder vi senare behöver komma åt (listan, formuläret). Dessa referenser lagras också på literalen.
+
+
+I version 2 av labben (live [här](http://blog.krawaller.se/lnulabs/labbymezzage/index2.html)) så kan man uppdatera text i meddelandena. Där abstraherade jag ut en createForm-funktion som används både av de individuella meddelandena och av huvudformuläret för att skriva in nya meddelanden.
