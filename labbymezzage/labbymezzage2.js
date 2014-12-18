@@ -40,21 +40,21 @@ window.Chat = function(selector){
 			this.drawMessages();
 		},
 		drawMessages: function(){
-			this.msglist.innerHTML = '';
+			this.msglist.innerHTML = "";
 			this.msgs.map(this.drawMessage.bind(this));
 			this.msglist.appendChild(create("div","Antal: "+this.msgs.length));
 		},
-		drawMessage: function(msg,n){
+		drawMessage: function(msgobj,n){
 			var msg = create("div");
 			if (this.editing[n]){
-				msg.appendChild(createForm(this.msgs[n].text,"Uppdatera",this.updateMessage.bind(this,n)));
+				msg.appendChild(createForm(msgobj.text,"Uppdatera",this.updateMessage.bind(this,n)));
 			} else {
-				msg.appendChild(create("span",this.msgs[n].text.replace(/\n/g,"<br/>")));
+				msg.appendChild(create("span",msgobj.text.replace(/\n/g,"<br/>")));
 				msg.insertBefore(create("button","X",this.deleteMessage.bind(this,n)),msg.firstChild);
 				msg.insertBefore(create("button","?",this.tellTime.bind(this,n)),msg.firstChild);
 			}
 			msg.insertBefore(create("button",this.editing[n]?"avbryt":"ändra",this.toggleEdit.bind(this,n)),msg.firstChild);
-			msg.classList.add("message")
+			msg.classList.add("message");
 			this.msglist.appendChild(msg);
 		},
 		toggleEdit: function(n){

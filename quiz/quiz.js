@@ -1,4 +1,4 @@
-Quiz = function(selector){
+window.Quiz = function(selector){
 	function create(tag,content,listener,event){
 		var node = document.createElement(tag);
 		node.innerHTML = content || "";
@@ -12,8 +12,8 @@ Quiz = function(selector){
 			this.container = document.querySelector(selector);
 			this.container.appendChild((this.msglist = create("div")));
 			var form = create("div");
-			form.appendChild((this.input = create("input",'',this.keyInForm,"keypress")));
-			form.appendChild(create("button",'Skicka!',this.answerQuestion));
+			form.appendChild((this.input = create("input","",this.keyInForm,"keypress")));
+			form.appendChild(create("button","Skicka!",this.answerQuestion));
 			form.classList.add("form");
 			this.container.appendChild(form);
 			this.container.classList.add("quizgame");
@@ -48,7 +48,7 @@ Quiz = function(selector){
 			var xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = function(){
 				if (xhr.readyState === 4){
-					this.input.value = '';
+					this.input.value = "";
 					if (xhr.status === 400){
 						this.wrongAnswer();
 					} else {
@@ -57,7 +57,7 @@ Quiz = function(selector){
 				}
 			}.bind(this);
 			xhr.open("POST", this.url, true);
-			xhr.setRequestHeader('Content-Type', 'application/json')
+			xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.send(JSON.stringify({answer:this.input.value}));
 		},
 		correctAnswer: function(data){

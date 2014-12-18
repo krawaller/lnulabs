@@ -6,7 +6,7 @@ window.Minesweeper = function(x,y,mines,selector){
 		return node;
 	}
 	function nextTo(n){
-		ret = [n-1,n+1,n-x-1,n-x,n-x+1,n+x-1,n+x,n+x+1].filter(function(i){return i >= 0 && i < x*y;});
+		var ret = [n-1,n+1,n-x-1,n-x,n-x+1,n+x-1,n+x,n+x+1].filter(function(i){return i >= 0 && i < x*y;});
 		if (!(n%x)) ret = _.difference(ret,[n-1,n-x-1,n+x-1]);
 		if ((n%x)===x-1) ret = _.difference(ret,[n+1,n-x+1,n+x+1]);
 		return ret;
@@ -105,7 +105,7 @@ window.Minesweeper = function(x,y,mines,selector){
 				this.msg.innerHTML = "You went BOOM! :(";
 			} else if (this.revealed+this.flags===x*y){
 				this.finished = true;
-				this.msg.innerHTML = "You win!! :)"
+				this.msg.innerHTML = "You win!! :)";
 			} else {
 				this.msg.innerHTML = (mines-this.flags)+" mines left";
 			}

@@ -29,7 +29,7 @@ window.Memory = function(x,y,selector){
 			document.querySelector(selector).appendChild(box);
 		},
 		setTileState: function(n,state){
-			this.tiles[n].classList.remove("hidden","revealed","correct","wrong")
+			this.tiles[n].classList.remove("hidden","revealed","correct","wrong");
 			this.tiles[n].classList.add(state);
 			if (state==="wrong"){
 				setTimeout(function(){

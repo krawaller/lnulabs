@@ -12,8 +12,8 @@ window.Chat = function(selector){
 			container.appendChild((this.msglist = create("div")));
 			container.appendChild((this.counter = create("div")));
 			var form = create("div");
-			form.appendChild((this.input = create("textarea",'',this.keyInForm,"keypress")));
-			form.appendChild(create("button",'Skicka!',this.addMessage));
+			form.appendChild((this.input = create("textarea","",this.keyInForm,"keypress")));
+			form.appendChild(create("button","Skicka!",this.addMessage));
 			container.appendChild(form);
 			container.classList.add("chatapp");
 			this.drawMessages();
@@ -33,12 +33,12 @@ window.Chat = function(selector){
 			}
 		},
 		drawMessages: function(){
-			this.msglist.innerHTML = '';
+			this.msglist.innerHTML = "";
 			this.msgs.map(this.drawMessage.bind(this));
 			this.msglist.appendChild(create("div","Antal: "+this.msgs.length));
 		},
-		drawMessage: function(msg,n){
-			var msg = create("div",this.msgs[n].text.replace(/\n/g,"<br/>"));
+		drawMessage: function(msgobj,n){
+			var msg = create("div",msgobj.text.replace(/\n/g,"<br/>"));
 			msg.insertBefore(create("button","X",this.deleteMessage.bind(this,n)),msg.firstChild);
 			msg.insertBefore(create("button","?",this.tellTime.bind(this,n)),msg.firstChild);
 			msg.classList.add("message");
