@@ -1,4 +1,4 @@
-window.Chat = function(selector){
+window.Chat = function(container){
 	function create(tag,content,listener,event){
 		var node = document.createElement(tag);
 		node.innerHTML = content || "";
@@ -7,8 +7,7 @@ window.Chat = function(selector){
 	}
 	var app = {
 		msgs: [],
-		init: function(selector){
-			var container = document.querySelector(selector);
+		init: function(){
 			container.appendChild((this.msglist = create("div")));
 			container.appendChild((this.counter = create("div")));
 			var form = create("div");
@@ -54,5 +53,5 @@ window.Chat = function(selector){
 			}
 		}
 	};
-	app.init(selector);
+	app.init();
 };

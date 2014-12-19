@@ -1,4 +1,4 @@
-window.Quiz = function(selector){
+window.Quiz = function(container){
 	function create(tag,content,listener,event){
 		var node = document.createElement(tag);
 		node.innerHTML = content || "";
@@ -8,15 +8,14 @@ window.Quiz = function(selector){
 	var app = {
 		errors: [],
 		url: "http://vhost3.lnu.se:20080/question/1",
-		init: function(selector){
-			this.container = document.querySelector(selector);
-			this.container.appendChild((this.msglist = create("div")));
+		init: function(){
+			container.appendChild((this.msglist = create("div")));
 			var form = create("div");
 			form.appendChild((this.input = create("input","",this.keyInForm,"keypress")));
 			form.appendChild(create("button","Skicka!",this.answerQuestion));
 			form.classList.add("form");
-			this.container.appendChild(form);
-			this.container.classList.add("quizgame");
+			container.appendChild(form);
+			container.classList.add("quizgame");
 			this.fetchQuestion();
 		},
 		keyInForm: function(e){
@@ -38,7 +37,7 @@ window.Quiz = function(selector){
 			xhr.send(null);
 		},
 		receiveQuestion: function(data){
-			this.container.classList.add("hasquestion");
+			container.classList.add("hasquestion");
 			this.errors.push(0);
 			this.url = data.nextURL;
 			this.log("question",data.question);
@@ -62,7 +61,7 @@ window.Quiz = function(selector){
 		},
 		correctAnswer: function(data){
 			this.log("correct","Yes, det var rätt!");
-			this.container.classList.remove("hasquestion");
+			container.classList.remove("hasquestion");
 			if (data.nextURL){
 				this.url = data.nextURL;
 				this.fetchQuestion();
@@ -75,9 +74,9 @@ window.Quiz = function(selector){
 			this.log("error","Fel! Försök #"+(this.errors[this.errors.length-1]+1)+":");
 		},
 		finish: function(){
-			this.container.classList.remove("hasquestion");
+			container.classList.remove("hasquestion");
 			this.log("ending","Du hade totalt "+this.errors.reduce(function(m,i){return m+i;},0)+" fel!");
 		}
 	};
-	app.init(selector);
+	app.init();
 };

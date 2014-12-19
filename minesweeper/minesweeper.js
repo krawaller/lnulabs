@@ -1,4 +1,4 @@
-window.Minesweeper = function(x,y,mines,selector){
+window.Minesweeper = function(x,y,mines,container){
 	function create(tag,content,listener,event){
 		var node = document.createElement(tag);
 		node.innerHTML = content || "";
@@ -39,7 +39,7 @@ window.Minesweeper = function(x,y,mines,selector){
 			box.appendChild((this.msg = create("p")));
 			box.appendChild(create("button","Reset",this.resetGame.bind(this)));
 			box.classList.add("minesweeper");
-			document.querySelector(selector).appendChild(box);
+			container.appendChild(box);
 		},
 		resetGame: function(){
 			this.squares = _.range(0,x*y).map(function(n){return 0;});

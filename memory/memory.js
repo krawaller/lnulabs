@@ -1,4 +1,4 @@
-window.Memory = function(x,y,selector){
+window.Memory = function(x,y,container){
 	function create(tag,content,listener,event){
 		var node = document.createElement(tag);
 		node.innerHTML = content || "";
@@ -9,7 +9,7 @@ window.Memory = function(x,y,selector){
 		tiles: [],
 		matches: 0,
 		fails: 0,
-		init: function(x,y,selector){
+		init: function(){
 			this.arr = _.shuffle(_.range(0,x*y/2).concat(_.range(0,x*y/2)));
 			var table = create("table");
 			_.range(0,y).map(function(r){
@@ -26,7 +26,7 @@ window.Memory = function(x,y,selector){
 			box.appendChild(table);
 			box.appendChild((this.status = create("p","Let's begin!")));
 			box.classList.add("memogame");
-			document.querySelector(selector).appendChild(box);
+			container.appendChild(box);
 		},
 		setTileState: function(n,state){
 			this.tiles[n].classList.remove("hidden","revealed","correct","wrong");
@@ -75,5 +75,5 @@ window.Memory = function(x,y,selector){
 			this.status.innerHTML = msg;
 		}
 	};
-	app.init(x,y,selector);
+	app.init();
 };
